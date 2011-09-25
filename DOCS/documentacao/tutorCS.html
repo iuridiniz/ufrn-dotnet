@@ -1,0 +1,166 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>:: C# e .NET :: Inciando em C# ::</title>
+<link rel="stylesheet" type="text/css" href="../css/padrao.css">
+</head>
+
+<body>
+
+<h1><b><a href="../index.html">Plataforma .Net e C#</a></b></h1>
+<h2>Iniciando em C#</h2>
+<p>Este módulo dá uma visão geral do C#.</p>
+<p>Última revisão: 10/07/2003</p>
+<p>Página do projeto: http://tux.lcc.ufrn.br/~iuri/projeto&nbsp;</p>
+<h3>Criando o primeiro programa em C#</h3>
+<p>Abra seu editor de textos preferido e escreva o seguinte programa:</p>
+<p><img border="0" src="imagens/CSharpFirstProgram.gif" width="800" height="569"></p>
+<p>Compile e execute.<br>
+Ao longo desse módulo, será descrito alguns aspectos deste primeiro programa.</p>
+<p>Observe a saída do programa:</p>
+<p><img border="0" src="imagens/CsharpFirstProgram_saida.gif" width="719" height="413"></p>
+<h3>Definindo uma classe</h3>
+<p>Classes são os ingredientes básicos das linguagens orientadas a objetos. As
+classes em C# são declaradas com a palavra reservada <i>class</i> seguida do
+nome da classe e um bloco de comandos entre chaves. Nosso primeiro programa possuía
+somente uma classe e seu nome era <i>FirstCSharpClass.</i></p>
+<p>C#, como a maioria das linguagens orientadas a objetos, suporta métodos e
+variáveis membro. </p>
+<p>Observe a classe abaixo: </p>
+<p><img border="0" src="imagens/FirstClass.gif" width="800" height="569"></p>
+
+<p>Esta classe possui três métodos e duas variáveis membro. Possui o
+construtor <i>Employee </i>e dois outros métodos <i>getFirstName</i> e <i>getLastName</i>,&nbsp;</p>
+<p>Classes e membros podem ter modificadores associados aos mesmos que definem
+sua visibilidade.</p>
+<table border="1" width="450" height="261">
+  <tr>
+    <td height="42" class="cab_tab"><b>Modificador de acesso</b></td>
+    <td height="42" class="cab_tab"><b>Visibilidade</b></td>
+  </tr>
+  <tr>
+    <td height="21"><i>public</i></td>
+    <td height="21">Acessível de qualquer lugar.</td>
+  </tr>
+  <tr>
+    <td height="42"><i>protected</i></td>
+    <td height="42">Acessível somente pela própria classe ou qualquer classe
+      derivada desta.</td>
+  </tr>
+  <tr>
+    <td height="42"><i>internal</i></td>
+    <td height="42">Acessível somente pelo programa em que foi declarada.</td>
+  </tr>
+  <tr>
+    <td height="37"><i>protected internal</i></td>
+    <td height="37">Acessível somente pela própria classe ou qualquer classe
+      derivada desta no mesmo programa.</td>
+  </tr>
+  <tr>
+    <td height="41"><i>private</i> (padrão)</td>
+    <td height="41">Acessível somente pela própria classe.</td>
+  </tr>
+  <tr>
+    <td height="42"><i>static<br>
+      </i>(em métodos)</td>
+    <td height="42">Indica que o método não está associado a nenhum objeto e
+      é chamado no contexto da classe com a sintaxe <b>classe.método</b> em
+      vez de <b>objeto.método</b></td>
+  </tr>
+</table>
+<p>Você não precisa se preocupar em fazer um destrutor para sua classe, pois a
+.NET CLR usa um coletor de lixo que automaticamente limpa a memória.</p>
+<h3>O ponto de entrada do programa, o método Main</h3>
+<p>Todo programa em C# deve ter o método Main, aqui alguns exemplos de
+declaração do método Main:</p>
+<p class="codigo">static void Main( string[] args )</p>
+<p class="codigo">static int Main( )</p>
+<p class="codigo">static int Main( string[] args )</p>
+<p>Quando o programa é executado, ele sempre chama o método Main. O método
+Main é sempre declarado como <i>static</i>. Note que ele é sempre declarado
+dentro de uma classe, isto é sempre será um método. Em outras linguagens como
+C++, o ponto de entrada do programa é sempre uma função global. Funções
+globais não são permitidas em C#.</p>
+<p>O método Main, pode obter os argumentos de linha de comando passados ao
+programa em forma de um vetor de strings. Em nosso primeiro programa, nós
+checamos se foram passados alguns argumentos:</p>
+<p class="codigo">if (args.Length &gt; 0 ) {<br>
+<i>&nbsp;&nbsp;&nbsp;</i> <i>[...]</i><br>
+}</p>
+<h3>Aplicativos para console</h3>
+<p>Nosso primeiro exemplo é um aplicativo para console, uma aplicação deste
+tipo, não tem um interface com o usuário(UI), não há caixas de opções,
+botões ou janelas. A entrada e a saída do texto vem do console, que no windows
+o prompt do MS-DOS. Aplicativos para console simplificam os exemplos dados nos
+módulos.</p>
+<h3><i>Namespaces</i></h3>
+<p><i>Namespaces </i>são usados em .NET para organizar as bibliotecas de
+classes em uma estrutura hierárquica, a <i>.NET Framework&nbsp; SDK </i>possui
+diversos <i>namespaces </i>como <i>System, System.Windows.Forms, System.IO,
+System.Web.Forms</i>.&nbsp;</p>
+<p>O operador&nbsp; <b>&quot;.&quot;</b> é usado para separar <i>namespaces</i>
+que estão dentro de outros, como também é usado para separar classes que
+estão contidas dentro de <i>namespaces</i>. Por exemplo, no <i>namespace System.IO</i>,
+temos uma classe chamada <i>File</i>, para criarmos uma instância dessa classe
+devemos proceder assim:</p>
+<p class="codigo">System.IO.File file = new System.IO.File();</p>
+<p>Outra utilidade dos <i>namespace</i>´s<i>&nbsp;</i> é resolver os
+possíveis conflitos de classes de mesmo nome.</p>
+<h3>A palavra reservada <i>using</i></h3>
+<p>Você pode estar pensando que vai escrever uma porção de código para
+declarar um objeto, felizmente existe um atalho, a palavra reservado <i>using</i>.</p>
+<p>Você pode criar uma nova instância de uma classe desse jeito:</p>
+<p class="codigo">using System.IO;<br>
+File file = new File();</p>
+<h3>Mais sobre o operador &quot;.&quot;</h3>
+<p>O operador . também é usado para acessar um método (o um dado) em uma classe (no
+caso do método WriteLine() da classe Console) e para restringir uma&nbsp;classe
+a um específico Namespace (como em System.IO.File, onde File é exclusivamente
+uma classe do namespace System.IO), esta restrição é para termos certeza que
+estamos chamando uma classe de certo namespace.</p>
+<h3>Adicionando comentários</h3>
+<p>C# suporta 3 tipos diferentes de comentários, comentários de uma linha,
+comentários de múltiplas linhas e comentários de documentação de código.</p>
+<p>Comentários de uma linha começam com // e tudo que estiver apos ele não
+será interpretado até o final da linha. Comentários de múltiplas linhas
+começam com /* e terminam com */ e se expandem por múltiplas linhas, texto
+entre eles constituem um comentário.</p>
+<p>exemplo de comentários de uma linha:</p>
+<p class="codigo">// Atributo que contém o nome do usuário.<br>
+public string usuario = &quot;João Medeiros&quot;;<br>
+// Atributo que contem a idade do usuario.<br>
+public int idade = 26;<br>
+<br>
+System.Console.WriteLine(&quot;Usuario: &quot; + usuario); //escreve o nome do
+usuario<br>
+System.Console.WriteLine(&quot;Idade: {0} anos&quot;, idade.ToString() );</p>
+<p>Exemplo de comentários de múltiplas linhas:</p>
+<p class="codigo">/*<br>
+&nbsp;&nbsp;&nbsp; O seguinte código não é executado,&nbsp;<br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine( hoje.ToString() );<br>
+*/</p>
+<h3>Documentando seu código</h3>
+
+<p>Comentários que começam com ///, constituem a documentação XML do seu
+código. Documentando seu código com este tipo de comentário, o compilador
+pode gerar automaticamente toda a documentação para ser aproveitada por outras
+pessoas.</p>
+
+<h3>Tratamento de erros</h3>
+
+<p>Observando nosso primeiro programa exemplo, vemos que uma parte do código
+foi declarada em um bloco <i>try</i> e outra parte em um bloco <i>catch. </i>Pois
+bem C# pois controle e tratamento de erro, todo código que pode gerar um erro
+deve ser declarando num bloco <i> try</i> e caso este gere o erro, o código declarado
+no bloco <i> catch</i> é automaticamente chamado e executado.</p>
+
+<h3>Case-sensitive</h3>
+<p>C# é case-sensitive, isto quer dizer que writeline não é a mesma coisa de
+WriteLine, que não é a mesma coisa de WRITELINE.</p>
+
+</body>
+
+</html>

@@ -1,0 +1,302 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>:: C# e .NET :: Variaveis em C# ::</title>
+<link rel="stylesheet" type="text/css" href="../css/padrao.css">
+</head>
+
+<body>
+
+<h1><b><a href="../index.html">Plataforma .Net e C#</a></b></h1>
+<h2>Variáveis em C#</h2>
+<p>Este módulo especifica como C# trata os tipo de dados da .NET Framework.</p>
+<p>Última revisão: 21/07/2003</p>
+<p>Página do projeto: http://tux.lcc.ufrn.br/~iuri/projeto&nbsp;</p>
+<h3>Tipos de variáveis em .NET</h3>
+<p>Variáveis são espaços na memória do computador que um programa usa para
+guardar algumas informações que serão utilizadas por ele, são chamadas de
+variáveis porque podem a qualquer momento mudar o conteúdo da informação
+guardada.</p>
+<p>Em .NET existem dois tipos de variáveis, tipos por valor ou por referência.
+Tipos por valor, são variáveis que contém as informações diretamente e
+tipos por referência são variáveis que contém informações sobre onde um
+certo dado está armazenado. Quando você chama uma variável do tipo por valor
+ela devolve o dado real, diferente do tipo por valor, que devolve onde o dado
+está localizado na memória do computador e a partir daí o programa acessa
+este endereço de memória e obtém o dado.</p>
+<p>Tabela de tipos por valor inclusos em C#:</p>
+<p><img border="0" src="imagens/tipos_por_valor.gif" width="806" height="458"></p>
+<p>Alguns tipos por referência inclusos da .NET Framework:</p>
+<p><img border="0" src="imagens/tipos_por_ref.gif" width="855" height="98"></p>
+
+<h3>Declaração de variáveis</h3>
+
+<p>A declaração de uma variável tem sempre a seguinte notação:</p>
+
+<p>Tipo NomeDaVariável;</p>
+
+<p>Você não é obrigado a declarar suas variáveis no início de cada bloco.</p>
+
+<p>Nomes de variáveis devem começar com uma letra ou um
+sublinhado(&quot;_&quot;) e podem conter números, letras e sublinhado.
+Variáveis em letras maiúsculas são diferentes de variáveis de letras
+minúsculas, nOmE e Nome são variáveis diferentes.&nbsp;</p>
+
+<p>Nenhuma variável pode ter o mesmo nome de uma palavra reservada da
+linguagem. Segue as palavras reservadas de C#:</p>
+
+<p><img border="0" src="imagens/palavras_reservadas.gif" width="502" height="315"></p>
+
+<h3>Tipo Base</h3>
+
+<p>Todas as variáveis em C# são objetos de alguma <b> classe de tipos da .NET</b>(veja
+a primeira tabela) e derivam da classe base object. Como todas as variáveis
+são objetos, naturalmente elas possuem métodos e propriedades:</p>
+
+<p class="codigo">int x = 16;<br>
+Console.WriteLine( x.ToString() );</p>
+
+<h3>Variáveis inteiras</h3>
+
+<p>Variáveis do tipo inteiro guardam dados numéricos não fracionários, isto
+é, sem ponto decimal.</p>
+
+<p>Os tipos são:&nbsp;</p>
+<p class="codigo">byte, sbyte, int, uint, long, ulong, short, ushort.</p>
+<p>Exemplos:</p>
+<p class="codigo">sbyte num = 12;<br>
+byte valor = 255;<br>
+int valor = 123;<br>
+uint resultado= 42024124386;<br>
+long resultado = - 4445680;<br>
+ulong&nbsp; matricula = 12312362532173421743;<br>
+short index = 32767;<br>
+ushort index = 65535;</p>
+<h3>Lógicos</h3>
+<p>São utilizados em comparações e podem assumir verdadeiro ou falso(true ou
+false).</p>
+<p>Tipo:</p>
+<p class="codigo">bool</p>
+<p>Exemplos:</p>
+<p class="codigo">bool masculino = true;<br>
+bool ativado = false;</p>
+<h3>Caracteres</h3>
+<p>Armazenam um caractere formato unicode.</p>
+<p>Tipo:</p>
+<p class="codigo">char</p>
+<p>Exemplos:</p>
+<p class="codigo">char CaractereY = 'Y';&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //
+armazena Y<br>
+char CaractereY = '\x0057';&nbsp; // armazena Y usando seu valor
+hexadecimal&nbsp;<br>
+char CaractereY = (char) 87; // armazena Y convertido de um inteiro<br>
+char CaractereY = '\u0057';&nbsp; // armazena Y usando seu valor Unicode</p>
+<h3>Ponto flutuante</h3>
+<p>Armazenam números reais.</p>
+<p>Observações:</p>
+<p>As operações envolvendo pontos flutuantes não geram exceções:</p>
+<ul>
+  <li>Uma operação com um resultado muito pequeno para ser representado
+    torna-se zero</li>
+  <li>Uma operação com um resultado muito positivo/negativo para ser
+    representado produz um resultado +/- &quot;infinito&quot;</li>
+  <li>Uma divisão por zero gera um resultado &quot;infinito&quot;</li>
+  <li>Uma operação inválida gera como resultado um NaN(Não é um número -
+    Not a Number).</li>
+  <li>Se um dos operadores for um NaN, então o resultado será um NaN.</li>
+</ul>
+<div align="left">
+  <table border="0" cellpadding="0" width="468" height="304">
+    <tr>
+      <td width="216" height="273" valign="middle" align="center"><img border="0" src="imagens/calc1.gif" alt="Divisão de 0 por 0" width="142" height="233"></td>
+      <td width="216" height="273" valign="middle" align="center"><img border="0" src="imagens/calc2.gif" alt="Divisão de 3 por 0" width="142" height="233"></td>
+    </tr>
+    <tr>
+      <td width="216" height="23" valign="middle" align="center">Resultado da
+        divisão de 0 por 0</td>
+      <td width="216" height="23" valign="middle" align="center">Resultado da
+        divisão de 3 por 0</td>
+    </tr>
+  </table>
+</div>
+<p>Tipos:</p>
+<p class="codigo">double, float, decimal</p>
+<p>Exemplos:</p>
+<p class="codigo">float x = 3.5;<br>
+double y = 3;<br>
+decimal z = 300.5;</p>
+<h3>String</h3>
+<p>Uma string pode conter até 1 gigabyte de caracteres e é alocada dinamicamente.</p>
+<p>Tipo:</p>
+<p class="codigo">string</p>
+<p>Exemplos:</p>
+<p class="codigo">string FraseA = &quot;Que dia &quot;;<br>
+string FraseB = &quot;lindo&quot;;<br>
+Console.WriteLine( &quot;Esta é a minha frase: &quot; + FraseA + FraseB );</p>
+<h3>Incialização de variáveis</h3>
+<p>Todas as variáveis são inicializadas automaticamente para um valor padrão
+do tipo, normalmente zero.</p>
+<h3>Conversões</h3>
+<p>Converter diferentes diferentes tipos de dados é uma tarefa comum em
+programação, converter números reais para inteiros, números inteiros para
+reais, strings para números, números para strings. As conversões podem ser
+automáticas ou manuais. As conversões automáticas são feitas quando o tipo a
+receber o valor ( do lado esquerdo da atribuição) puder conter TODOS os
+possíveis valores da expressão (do lado direito do operador de atribuição)</p>
+<h4>Conversões chamando métodos.</h4>
+<p>Você pode utilizar de métodos ao fazer suas conversões de valores, elas
+são necessárias entre os seguintes tipos de dados:</p>
+<ul>
+  <li>inteiro para string</li>
+  <li>ponto flutuante para string</li>
+  <li>string para inteiro</li>
+  <li>string para ponto flutuante</li>
+</ul>
+<p>Para converter um inteiro ou um ponto flutuante para uma string basta chamar
+o método .ToString(), exemplo:</p>
+<p class="codigo">int x = 16;<br>
+float y = 20;<br>
+string meusNumeros = &quot;Estes são meus números: &quot; + x.ToString() +
+&quot; e &quot; + y.ToString();</p>
+<p>para converter uma string para inteiro ou um ponto flutuante chamamos o
+método estático .Parse(string s) do tipo de dado em questão, exemplo:</p>
+<p class="codigo">Console.Write(&quot;Escreva um número: &quot;);<br>
+string temporario = Console.ReadLine();<br>
+int numero = int.Parse(temporario);</p>
+<h4>Conversões com o operador de cast.</h4>
+<p>Para converter realizar conversões em cast, você chama o operador assim:</p>
+<p>(tipo) dado;</p>
+<p>Exemplo:</p>
+<p class="codigo">int n = 16;<br>
+double m = 15.6;<br>
+double k = 14.4;<br>
+double y;<br>
+<br>
+y = (double) n; // y vale 16<br>
+y = (int) m; // y vale 15<br>
+y = (int) k; // y vale 14<br>
+<br>
+y = (int) m + (int) k; // y vale 29<br>
+y = (int)( m + k ); // y vale 30</p>
+<h4>Checked</h4>
+<p>Se ao aplicarmos uma conversão e o valor não couber no dado, não geramos
+um erro. Observe o seguinte código</p>
+<p class="codigo">int N;<br>
+byte B;<br>
+<br>
+N = 10;<br>
+// Esta conversão funciona, pois 10 cabe em um byte<br>
+B = (byte) N;<br>
+<br>
+N = 1000;<br>
+// Esta conversão não funciona, mas não gera erro<br>
+B = (byte) N;</p>
+<p>Caso quiséssemos que a conversão gere uma exceção. Devemos colocá-la num
+bloco checked</p>
+<p class="codigo">int N;<br>
+byte B;<br>
+<br>
+N = 1000;<br>
+checked {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp; // Esta conversão irá gerar uma exceção do tipo: &quot;Number overflow&quot;.<br>
+&nbsp;&nbsp;&nbsp; B = (byte) N;<br>
+<br>
+}</p>
+<h3>Sufixos</h3>
+<p>Sufixo são maneiras de garantir que constantes sejam de um certo tipo:</p>
+<p>Exemplos:</p>
+<p class="codigo">// constantes do tipo long ou ulong<br>
+long valor1 = 10L;<br>
+ulong valor 2 = 10L;<br>
+<br>
+// constantes do tipo uint ou ulong<br>
+uint valor3 = 10u;<br>
+ulong valor4 = 10u;<br>
+<br>
+// constantes do tipo ulong<br>
+ulong valor5 = 10ul;<br>
+ulong valor6 = 10LU;<br>
+<br>
+// constantes do tipo float<br>
+float x = 10.7f;<br>
+<br>
+// constantes do tipo double<br>
+double y = 100.704d;<br>
+<br>
+// constantes do tipo decimal;<br>
+decimal d = 100.123312M;</p>
+<h3>Seqüências de escape em strings:</h3>
+<p>Seqüências de escape são utilizadas para representar caracteres que não
+possui representação no teclado ou que não são possíveis o uso direto em
+strings.</p>
+<p><img border="0" src="imagens/literais_strings.gif" width="417" height="395"></p>
+<p>Além destas seqüências a seqüência \uNNNN, onde NNNN é o código
+unicode de um caractere.</p>
+<p>Você pode entretanto usar uma string iniciada por @, assim ela irá ignorar
+as seqüências de escape da string;</p>
+<p>Exemplos:</p>
+<p class="codigo">string a = &quot;c:\\windows\\command.com&quot;; // a vale
+c:\windows\command.com <br>
+string a = @&quot;Numero1\nNumero2\n&quot;; // a vale Numero1\nNumero2\n</p>
+<h3>Operadores</h3>
+<p>Os operadores disponíveis em C#, são os seguintes e eles possuem a mesma
+função que em C++:</p>
+<p><img border="0" src="imagens/operadores.gif" width="569" height="123"></p>
+<h3>Enum</h3>
+<p>Enum é um tipo definido pelo usuário que associa nomes a números pois
+fazem mais sentido para qualquer um ler o código. Enums se comportam tanto como
+strings como inteiros.</p>
+<p>exemplo:</p>
+<p><img border="0" src="imagens/Enum_codigo.gif" width="800" height="570"></p>
+<p><img border="0" src="imagens/Enum_exec.gif" width="666" height="414"></p>
+<h3>Struct</h3>
+<p>Permite declarar tipos que contêm diversos valores identificados pelo nome.</p>
+<p>Como em C++, as estruturas podem ter métodos e construtores. Não é
+possível declarar um construtor que não aceite argumentos</p>
+<p><img border="0" src="imagens/struct.gif" width="800" height="570"></p>
+<h3>New</h3>
+<p>Independente do tipo, todas as variáveis podem ser inicializadas com o
+operador new.</p>
+<p>Exemplos:</p>
+<p class="codigo">int N2 = new int();<br>
+bool Socio = new bool();</p>
+<h3>Arrays</h3>
+<p>Arrays são coleções de um certo tipo de dados. São como matrizes com
+contém elementos que podem ser acessados em tempo de execução.</p>
+<p>Sempre que um array for declarado com um certo tipo, ele será válido para
+todos os itens do array. A declaração de um array sempre tem um [] depois do
+tipo da variável.</p>
+<p>O array pode ter diversas dimensões, mas o primeiro índice é sempre zero.</p>
+<p>Todo array deve ser inicializado, e para qualquer índice referenciado fora
+da faixa será gerado uma exception.</p>
+<p>Um array de várias dimensões pode ser declarado colocando vígulas dentro
+dos colchetes. Outra possibilidade é declarar um array de outro array.</p>
+<p>exemplos:</p>
+<p class="codigo">double[] Notas = new double[5];<br>
+int[] numeros = new int[100];<br>
+Notas[0] = 6;<br>
+Notas[1] = 10;<br>
+<br>
+int[] a1; //uma dimensão<br>
+int[,] a2; //duas dimensões<br>
+int[,,] a3; //três dimensões<br>
+int[][] a4; // aninhamento, array de array<br>
+int[][][] a5; //array de array de array<br>
+<br>
+int[] b1 = new int[] { 1, 2, 3};<br>
+int[,] b2 = new int[,] {{1,2,3}, {4,5,6}};<br>
+int[][] b3 = new int[3][];<br>
+b3[0] = new int[] { 1,2,3 };<br>
+b3[1] = new int[] { 4,5,6 };<br>
+b3[2] = new int[] { 7,8,9,10 };<br>
+<br>
+int[] c1 = {1,2,3};<br>
+</p>
+
+</body>
+
+</html>

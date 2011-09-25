@@ -1,0 +1,56 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>:: C# e .NET :: .NET FrameWork SDK ::</title>
+<link rel="stylesheet" type="text/css" href="../css/padrao.css">
+</head>
+
+<body>
+
+<h1><b><a href="../index.html">Plataforma
+.Net e C#</a></b></h1>
+<h2>Trabalhando com o .NET Framework SDK.</h2>
+<p>Este módulo ensina a compilar programas escritos em C# no Windows.</p>
+<p>Última revisão: 13/07/2003</p>
+<p>Página do projeto: http://tux.lcc.ufrn.br/~iuri/projeto&nbsp;</p>
+<h3>Obtendo os programas.</h3>
+<p>Para começar a programar usando C# são necessários somente um compilador e
+uma IDE ou um editor de textos qualquer.</p>
+<p>O compilador da Microsoft para Windows pode ser encontrado no site&nbsp; <a href="http://msdn.microsoft.com">http://msdn.microsoft.com</a>,
+é necessário também instalar o .NET Framework.&nbsp; Neste site você
+encontra também versões trial do Visual Studio.NET que é a IDE da Microsoft
+para desenvolvimento de aplicativos .NET.</p>
+<h3>Arquivos em C#.</h3>
+<p>A extensão padrão para códigos de programas feitos em C#é <b> .cs</b> como em
+<b>
+Empregado.cs.</b></p>
+<h3>Compilando e executando.</h3>
+<p>Para compilar um programa escrito em C#, você simplesmente chama o
+compilador com o seguinte comando:</p>
+<p class="codigo"><b>c:\progs\c_sharp\&gt;</b> csc programa.cs</p>
+<p>Ele produz um executável de nome <b>programa.exe</b>, para executar o programa
+basta chamá-lo, agora ele já pode ser executado em qualquer máquina que
+suporte a plataforma .NET.</p>
+<p>Para gera a documentação XML de uma classe, você chama o compilador assim:</p>
+<p class="codigo"><b>c:\progs\c_sharp\&gt;</b> csc Classe.cs /doc:Classe.xml</p>
+
+<p>As classes do namespace System, como Console, e outras funções do núcleo
+do .NET residem em uma biblioteca chamada corlib.dll e esta biblioteca é usada
+por padrão. Você pode se referir a classes em outras bibliotecas, mas precisa
+especificar a localização e os nomes destas bibliotecas quando o aplicativo é
+compilado. Por exemplo, se quiser compilar um programa que usa interface gráfica
+da classe System.Windows.Forms, você deve passar ao compilador que está
+biblioteca é referenciada:</p>
+<p class="codigo"><b>c:\progs\c_sharp\&gt;</b> csc Form.cs /r:System.Windows.Forms.dll</p>
+<p>Se por acaso esta biblioteca estiver em um diretório que não seja o diretório
+padrão das bibliotecas .NET ou o diretório atual, você deve especificar o
+diretório da biblioteca:</p>
+<p class="codigo"><b>c:\progs\c_sharp\&gt;</b> csc Form.cs /L:C:\dotNET_SDK\lib
+/r:System.Windows.Forms.dll</p>
+
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>:: C# e .NET :: Mono ::</title>
+<link rel="stylesheet" type="text/css" href="../css/padrao.css">
+</head>
+
+<body>
+
+<h1><b><a href="../index.html">Plataforma .Net e C#</a></b></h1>
+<h2>Trabalhando com o mono.</h2>
+<p>Este módulo ensina a compilar programas escritos em C#, bem como executar
+programas .NET no Linux ou outros Unix's</p>
+<p>Última revisão: 13/07/2003</p>
+<p>Página do projeto: http://tux.lcc.ufrn.br/~iuri/projeto&nbsp;</p>
+<h3>Obtendo os programas.</h3>
+<p>Para começar a programar usando C# são necessários somente um compilador e
+uma IDE ou um editor de textos qualquer.</p>
+<p>Existe um compilador de C# para Unix chamado Mono da Ximian que pode ser
+encontrado no site: <a href="http://www.go-mono.com">http://www.go-mono.com</a>.
+</p>
+<h3>Arquivos em C#.</h3>
+<p>A extensão padrão para códigos de programas feitos em C#é<b> .cs </b> como em
+<b>
+Empregado.cs.</b></p>
+<h3>Compilando e executando.</h3>
+<p>Para compilar um programa escrito em C#, você simplesmente chama o
+compilador com o seguinte comando:</p>
+<p class="comando"><b>iuri@serbg:~/c_sharp$</b> mcs programa.cs</p>
+<p>Ele produz um executável de nome <b>programa.exe</b>, para executar o programa
+você precisa chamar um interpretador pois o executável não está em um
+formato entendido pelo Unix (O formato dele é Windows PE, Portable Executable,
+mas o Linux, por exemplo,&nbsp; só entende formatos A.OUT ou ELF), para adicionar este suporte
+consulte o próximo tópico. Para executar seu programa,
+tente:</p>
+<p class="comando"><b>iuri@serbg:~/c_sharp$</b> mono programa.exe</p>
+<p>ou então:</p>
+<p class="comando"><b>iuri@serbg:~/c_sharp$ </b> mint programa.exe</p>
+<p>Isto se deve ao pacote Mono conter um JIT, Just in Time Compiler (o <b>mono</b>) e um
+intepretador de CLI, Common Linguage Infrastructure (o <b>mint</b>).</p>
+<p>Para gera a documentação XML de uma classe, você chama o compilador assim:</p>
+<p class="comando"><b>iuri@serbg:~/c_sharp$</b> mcs Classe.cs /doc:Classe.xml</p>
+<p>ou assim:</p>
+<p class="comando"><b>iuri@serbg:~/c_sharp$</b> mcs Classe.cs -doc:Classe.xml</p>
+<p>Isto é porque o <b> mcs</b>  aceita opções estilo Windows (/opção).</p>
+<p>As classes do namespace System, como Console, e outras funções do núcleo
+do .NET residem em uma biblioteca chamada corlib.dll e esta biblioteca é usada
+por padrão. Você pode se referir a classes em outras bibliotecas, mas precisa
+especificar a localização e os nomes destas bibliotecas quando o aplicativo é
+compilado. Por exemplo, se quiser compilar um programa que usa interface
+gráfica da classe System.Windows.Forms, você deve passar ao compilador que
+está biblioteca é referenciada:</p>
+<p class="comando"><b>iuri@serbg:~/c_sharp$</b> mcs Form.cs /r:System.Windows.Forms.dll</p>
+<p>Se por acaso esta biblioteca estiver em um diretório que não seja o
+diretório do mono ou o diretório atual, você deve especificar o diretório da
+biblioteca:</p>
+<p class="comando"><b>iuri@serbg:~/c_sharp$</b> mcs Form.cs /L:/usr/local/lib/mono
+/r:System.Windows.Forms.dll</p>
+<h3>Configurando o Linux para executar arquivos .NET</h3>
+<p>O seu <i> kernel</i> deve ter suporte para <i>binfmt</i>, se não tiver recompile o
+<i>kernel</i>.</p>
+<p>Adicione a seguinte linha ao seu <i> fstab</i>:</p>
+<p class="codigo">binfmt_misc&nbsp;&nbsp;&nbsp; /proc/sys/fs/binfmt_misc&nbsp;&nbsp;&nbsp;
+binfmt_misc&nbsp;&nbsp;&nbsp; none</p>
+<p>Toda vez que seu Linux iniciar, execute o seguinte comando, ou coloque-o em
+seus scripts de inicialização:</p>
+<p class="comando"><b>root@serbg:~#</b> echo ':CLR:M::MZ::/usr/bin/mono:' >
+/proc/sys/fs/binfmt_misc/register</p>
+<p>Lembre-se de trocar <b>/usr/bin/mono</b> pelo executável do mono, se
+preferir coloque o executável do <b>mint</b>.</p>
+<p>Agora é só chamar seu programa para executá-lo se ele já tiver a
+permissão de executável.</p>
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>:: C# e .NET :: Documentando seu codigo ::</title>
+<link rel="stylesheet" type="text/css" href="../css/padrao.css">
+</head>
+
+<body>
+
+<h1><b><a href="../index.html">Plataforma .Net e C#</a></b></h1>
+<h2>Documentação XML</h2>
+<p>Este módulo descreve algumas tags da documentação de código em C#.</p>
+<p>Última revisão: 13/07/2003</p>
+<p>Página do projeto: http://tux.lcc.ufrn.br/~iuri/projeto&nbsp;</p>
+<h3>Os comentários de documentação ///</h3>
+<p>Você tem o costume de documentar seus códigos? Com certeza não é uma
+tarefa muito apreciada pelos desenvolvedores, sendo que custa muito dinheiro
+para criar e principalmente documentar devido ao tempo gasto. Mas, se você for
+pensar assim, quando precisar realizar uma manutenção em um código, terá de
+vasculhar todos os vínculos, desvios, enfim, tudo o que implica no respectivo
+código.</p>
+<p>Para isso, a Microsoft criou uma forma de documentação automática,
+adotando o padrão XML. Assim, qualquer estrutura de código pode seguir as
+regras que o XML se encarrega de exibir. Estamos falando aqui de uma simples
+documentação de códigos, não de fluxo de informações de um aplicativo.</p>
+<p>Você pode inserir qualquer comentário no código, inserindo as ///(três
+barras), e com isso o programa XML saberá do que se trata.</p>
+<p><img border="0" src="imagens/DocumentSimpleHello.gif" width="800" height="569"></p>
+<p>Há tags XML que são sugeridas para serem usadas(você também pode criar as
+suas), veja algumas:</p>
+<h4>&lt;summary&gt; <i>[...]</i> &lt;/summary&gt;</h4>
+<p>Para uma descrição rápida.</p>
+<h4>&lt;remarks&gt; <i>[…]</i> &lt;/remarks&gt;</h4>
+<p>Para uma descrição detalhada, esta tag pode conter parágrafos, listas e
+outros tipos de tags.</p>
+<h4>&lt;para&gt; <i>[...]</i> &lt;/para&gt;</h4>
+<p>Esta tag permite parágrafos em uma estrutura &lt;remarks&gt;</p>
+<h4>&lt;example&gt; <i>[...]</i> &lt;/example&gt;&nbsp;</h4>
+<p>Para demonstrar um exemplo de um método, propriedade ou como um membro deve
+ser usado, utilize com a tag &lt;code&gt;.</p>
+<h4>&lt;code&gt; <i>[...]</i> &lt;/code&gt;</h4>
+<p>Para indicar que é o texto seguinte é código de aplicativo.</p>
+<h4>&lt;seealso cref=&quot;<i>membro</i>&quot; /&gt;&nbsp;</h4>
+<p>Para indicar uma referencia a outro membro ou campo, o compilador checa se de
+fato o &quot;membro&quot; existe.</p>
+<h4>&lt;param name=&quot;<i>nome</i>&quot;&gt; <i>[…]</i> &lt;/param></h4>
+<p>Para prover uma descrição para um parâmetro de um dado método.</p>
+<p><img border="0" src="imagens/DocumentMetodoSoma.gif" width="800" height="569"></p>
+<h4>&lt;returns> <i>[…]</i> &lt;/returns></h4>
+<p>Para documentar um valor de retorno e um tipo de método.</p>
+<h4>&lt;value> <i>[…]</i> &lt;/value></h4>
+<p>Para descrever uma propriedade.</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

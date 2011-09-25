@@ -1,0 +1,325 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>:: C# e .NET :: De C++ para C# ::</title>
+<link rel="stylesheet" type="text/css" href="../css/padrao.css">
+</head>
+
+<body>
+
+<h1><b><a href="../index.html">Plataforma .Net e C#</a></b></h1>
+<h2>Diferenças cruciais entre C# e C++</h2>
+<p>Este módulo tende a ser útil a programadores C++ que querem programar em C#.</p>
+<p>Última revisão: 17/07/2003</p>
+<p>Página do projeto: http://tux.lcc.ufrn.br/~iuri/projeto&nbsp;</p>
+<h3>Exemplos usados no módulo:</h3>
+<hr>
+<h4>Exemplo 1, imprimindo um inteiro:</h4>
+<p>feito para C++:</p>
+<p class="codigo_borda"><br>
+void main() {<br>
+&nbsp;&nbsp;&nbsp; int x = 16;<br>
+&nbsp;&nbsp;&nbsp; std::cout &lt;&lt; &quot;Oi vocês, olhe este numero:
+&quot;&lt;&lt; x &lt;&lt; endl;<br>
+}<br>
+&nbsp;</p>
+<p>convertido para C#:</p>
+<p class="codigo_borda"><br>
+class Programa1 {<br>
+&nbsp;&nbsp;&nbsp; public static void Main(){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int x = 16;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.Console.WriteLine(&quot;Oi
+vocês, olhe este número: {0}&quot;, x );<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}<br>
+&nbsp;</p>
+<hr>
+<h4>Exemplo 2, chamando uma função/método 1:</h4>
+<p>feito em C++:</p>
+<p class="codigo_borda"><br>
+using std::cout;<br>
+void produto(int, int);<br>
+<br>
+int main() {<br>
+&nbsp;&nbsp;&nbsp; produto(16, 3);<br>
+&nbsp;&nbsp;&nbsp; return(0);<br>
+}<br>
+<br>
+void produto(int x, int y) {<br>
+&nbsp;&nbsp; cout &lt;&lt; x * y &lt;&lt; endl;&nbsp;<br>
+}<br>
+&nbsp;</p>
+<p>Convertido para C#:&nbsp;</p>
+<p class="codigo_borda"><br>
+using System;<br>
+class Programa2 {<br>
+&nbsp;&nbsp;&nbsp; public static int Main() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Produto(16, 3);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return(0);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; static void Produto(int x, int y) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(x * y);&nbsp;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}<br>
+&nbsp;</p>
+<hr>
+<h4>Exemplo 3, chamando uma função/método 2:</h4>
+<p>feito em C++:</p>
+<p class="codigo_borda"><br>
+using std::cout;<br>
+int soma(int, int);<br>
+<br>
+int resultado; //variável global<br>
+<br>
+void main() {<br>
+&nbsp;&nbsp;&nbsp; int x = 16;<br>
+&nbsp;&nbsp;&nbsp; int y = 20;<br>
+<br>
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; soma(x,y) &lt;&lt; endl;<br>
+&nbsp;&nbsp;&nbsp; soma(45, 88);<br>
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; resultado &lt;&lt; endl;<br>
+}<br>
+<br>
+int soma(int num1, int num2) {<br>
+&nbsp;&nbsp;&nbsp; resultado = num1 + num2;<br>
+&nbsp;&nbsp;&nbsp; return(resultado);<br>
+}<br>
+&nbsp;&nbsp;</p>
+<p>convertido para C#:</p>
+<p class="codigo_borda"><br>
+using System;<br>
+<br>
+class Programa3 {<br>
+<br>
+&nbsp;&nbsp;&nbsp; static int resultadoDaSoma; //propriedade global<br>
+<br>
+&nbsp;&nbsp;&nbsp; public static void Main() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int x = 16;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int y = 20;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Chamando um método explicitando a
+classe<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(
+Programa3.Soma(x,y) );<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Chamando o mesmo método sem
+explicitar a classe<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Soma(45, 88);&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //mostrando o valor sem explicitar o
+nome da classe<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(resultadoDaSoma);&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; static int Soma(int num1, int num2) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; resultadoDaSoma = num1 + num2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return(resultadoDaSoma);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}<br>
+&nbsp;</p>
+<hr>
+<h4>Exemplo 4, usando o switch()</h4>
+<p>escrito em C++:</p>
+<p class="codigo_borda"><br>
+using std::cout;<br>
+using std::cin;<br>
+void main() {<br>
+<br>
+&nbsp;&nbsp;&nbsp; int numero;<br>
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; &quot;Digite um número de 0 a 3: &quot;;<br>
+&nbsp;&nbsp;&nbsp; cin &gt;&gt; numero;<br>
+&nbsp;<br>
+&nbsp;&nbsp; switch(numero) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 3:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt;
+&quot;igual a 3&quot; &lt;&lt;endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 2:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt;
+&quot;maior ou igual a 2&quot; &lt;&lt;endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 1:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt;
+&quot;igual a 1&quot; &lt;&lt;endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 0:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt;
+&quot;maior ou igual a 0&quot; &lt;&lt;endl;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}<br>
+&nbsp;</p>
+<p>convertido para C#:</p>
+<p class="codigo_borda"><br>
+using System;<br>
+class Programa4{<br>
+&nbsp;&nbsp;&nbsp; public static void Main() {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numero;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.Write(&quot;Digite um número
+de 0 a 3: &quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; numero = int.Parse( Console.ReadLine()
+);<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; switch(numero) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 3:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Console.WriteLine( &quot;igual a 3&quot; );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+goto case 2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 2:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Console.WriteLine( &quot;maior ou igual a 2&quot; );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 1:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Console.WriteLine( &quot;igual a 1&quot; );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+goto case 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 0:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Console.WriteLine( &quot;maior ou igual a 0&quot; );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}<br>
+<br>
+</p>
+<hr>
+<h3>Exemplo 5, imprimir quadrados</h3>
+<p>escrito em C++:</p>
+<p class="codigo_borda"><br>
+using std::cin;<br>
+using std::cout;<br>
+<br>
+void main() {<br>
+<br>
+&nbsp;&nbsp;&nbsp; int x;<br>
+<br>
+&nbsp;&nbsp;&nbsp; cout &lt;&lt; &quot;Digite um número, 0 para sair: &quot;;<br>
+&nbsp;&nbsp;&nbsp; cin &gt;&gt; x;<br>
+<br>
+&nbsp;&nbsp;&nbsp; while (x) {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; x * x &lt;&lt; endl;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; &quot;Digite um
+número, 0 para sair: &quot;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cin &gt;&gt;
+x;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+}<br>
+&nbsp;</p>
+<p>convertido para C#:</p>
+<p class="codigo_borda"><br>
+using System;<br>
+class Programa5 {<br>
+&nbsp;&nbsp;&nbsp; public static void Main() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int x;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.Write ( &quot;Digite um
+número, 0 para sair: &quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x = int.Parse( Console.ReadLine() );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while (x != 0 ) {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine
+( x * x );<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.Write
+( &quot;Digite um número, 0 para sair: &quot;) ;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x = int.Parse(
+Console.ReadLine() );<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+}<br>
+&nbsp;&nbsp;</p>
+<hr>
+<h3>Classe obrigatória</h3>
+<p>Todo programa ou biblioteca em C#, tem que ter pelo menos uma classe, entenda
+isto como se todas as suas ferramentas de C++ devem, em C#, obrigatoriamente
+estar dentro de uma estrutura de dados (classe).</p>
+<p>Observando o programas convertidos, podemos ver que as antigas funções em
+C++&nbsp; e suas antigas variáveis globais&nbsp; estão agora dentro de uma
+classe.</p>
+<p>Não existem mais funções e variáveis globais.</p>
+<h3>De variáveis globais para propriedades.</h3>
+<p>Para declarar suas antigas variáveis globais, basta declará-las fora do
+método Main(), mas destro da classe&nbsp; obrigatória, como
+propriedades da classe(variáveis estáticas), você pode evidenciar isto no exemplo 3.</p>
+<h3>De funções para métodos estáticos.&nbsp;</h3>
+<p>Em C# não existe funções, pelo menos não ao pé letra, basta declará-las
+normalmente como sendo métodos estáticos da classe obrigatória. Observe que no exemplo 3
+podemos chamar as nossas antigas funções especificando a classe(como métodos
+estáticos) e sem
+especificar a classe (como funções).</p>
+<p>Observe que chamamos várias vezes o método WriteLine da classe Console.</p>
+<h3>A palavra reservada <i>static</i></h3>
+<p>Quando seus dados estão dentro de uma classe, eles então só podem ser
+usados em objetos, ao declararmos alguma propriedade ou método como <i>static</i>,
+ela pode ser usada sem ser preciso instanciar um objeto da classe, se não tivéssemos
+declarado nossas antigas funções como <i>static</i> elas só poderiam ser usadas
+se antes nós criássemos um objeto da classe obrigatória e chamássemos tudo a
+partir dele.</p>
+<p>Se não declarássemos nossos métodos como estáticos, ao invés de chamar
+simplesmente a função como chamamos, teríamos que, primeiro, instanciar um
+objeto da classe obrigatória e então chamar o método</p>
+<p>Exemplo de como iríamos chamar um método ele não fosse estático:</p>
+<p>se fosse estático:&nbsp;</p>
+<p class="codigo">Método(); // sem especificar a classe,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // caso se esteja
+chamando de outro método da classe<br>
+Classe.Método(); // especificando a classe.</p>
+<p>se não fosse estático:</p>
+<p class="codigo">//Método(); // Chamada ilegal.<br>
+//Classe.Método(); // Chamada ilegal.<br>
+Classe objeto = new Classe(); // criá-se primeiro o objeto.<br>
+objeto.Método(); // depois se chama o método a partir do objeto.</p>
+<h3>Protótipos</h3>
+<p>Em C#, você não precisa mais prototipar suas funções antes de usá-las,
+isto na prática quer dizer que não é mais preciso usar arquivos <i> head </i> para que
+suas classes funcionem corretamente. C# não contém a diretiva de
+pré-processador <i>#include</i> para importar partes do programa.</p>
+<h3>Rótulos</h3>
+<p>Não existem mais rótulos para seus métodos/propriedades, agora você diz o
+que cada estrutura é, especificando o mesmo com o tipo de visibilidade antes da
+declaração, caso você deixe de fazer, automaticamente ela será <i>private.</i></p>
+<h3>O método Main()</h3>
+<p>Diferente de C++, o ponto de entrada de um programa se chama Main, com M
+maiúsculo, ele deve obrigatoriamente ser <i> public</i> porque deve está acessível
+fora da classe e deve ser<i> static </i> porque deve estar acessível sem ser preciso
+criar um objeto.</p>
+<h3>O operador de escopo</h3>
+<p>Programas escritos em C#, não estão sobrecarregados de operadores
+&quot;::&quot; ou &quot;-&gt;&quot;. O &quot;:&quot; não é um operador em C#,
+o operador &quot;-&gt;&quot; é usado somente uma pequena porção dos programas
+escritos em C#.&nbsp;</p>
+<p>Se você fosse chamar um método fora num contexto de classe(isto é, sem
+criar um objeto), em C++, você faria isto usando Classe::Método, em C#, você
+utiliza o operador . como se fosse chamar um método de um objeto ou uma classe como em Console.WriteLine();</p>
+<p>Detalhe em C++ para .NET, você chama Console::WriteLine().</p>
+<h3>O <i>switch </i></h3>
+<p>Todo rótulo de um <i>switch</i> agora deve conter um <i>break</i> ou um <i>goto</i>,
+não é mais possível para ele executar todos os casos abaixo dele até achar
+um <i>break</i>. Dê uma olhada no exemplo 4.</p>
+<h3>Conversão de <i>int</i> para <i>bool</i></h3>
+<p>Agora você não pode mais converter inteiros para valores lógicos, isto na
+prática quer dizer que a construção:</p>
+<p class="codigo">if (x) { <br>
+&nbsp;&nbsp;&nbsp; //FacaAlgumaCoisa() <br>
+}</p>
+<p>não é mais permitida. Dê uma olhada no exemplo 5.</p>
+
+</body>
+
+</html>

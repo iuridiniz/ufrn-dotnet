@@ -1,0 +1,157 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>:: C# e .NET :: A Classe System.Console ::</title>
+<link rel="stylesheet" type="text/css" href="../css/padrao.css">
+</head>
+
+<body>
+
+<h1><b><a href="../index.html">Plataforma .Net e C#</a></b></h1>
+<h2>A classe System.Console</h2>
+<p>Este módulo dá explica como usar a classe System.Console para leitura e
+escrita em consoles, a classe é apresentada em C#, mas pode este documento pode
+facilmente ser estendido para outras linguagens .NET</p>
+<p>Última revisão: 13/07/2003</p>
+<p>Página do projeto: http://tux.lcc.ufrn.br/~iuri/projeto</p>
+<h3>Métodos Write e WriteLine</h3>
+<hr>
+<ul>
+  <li>Console.Write e Console.WriteLine escrevem informações na tela do
+    console
+    <ul>
+      <li>WriteLine gera uma nova linha.</li>
+    </ul>
+  </li>
+  <li>Ambos os métodos são sobrecarregados.</li>
+  <li>Uma string de formato e parâmetros podem ser usados para:
+    <ul>
+      <li>Formatar texto.</li>
+      <li>Formatar números.</li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<p>Você pode usar Console.Write e Console.WriteLine para mostrar informações
+na tela de console. Estes dois métodos são muito similares, a diferença
+principal é que WriteLine inclui um caractere de nova linha no final da saída e
+Write não faz isto.</p>
+<p>Ambos os métodos são sobrecarregados, você pode chamá-los com variáveis
+numéricas ou strings. Por exemplo você pode usar o seguinte código para
+escrever &quot;99&quot; na tela:</p>
+<p class="codigo">Console.WriteLine(99);</p>
+<p>Você pode usar o código seguinte para escrever a mensagem &quot;Oi
+vocês&quot; na tela:</p>
+<p class="codigo">Console.WriteLine(&quot;Oi vocês&quot;);</p>
+<h4>Formatando Textos</h4>
+<p>Você pode usar as formas poderosas de Write e WriteLine que pegam uma string
+de formato e parâmetros adicionais.&nbsp; A string de formato especifica como
+os dados iram para a saída, e ela contém marcadores que são substituídos em
+ordem pelos parâmetros que se seguem, por exemplo:</p>
+<p class="codigo">Console.WriteLine(&quot;A soma de {0} com {1} é igual a
+{2}&quot;, 147, 68, 147+48);</p>
+<p>que retorna: &quot;A soma de 127 com 68 é igual a 195&quot;</p>
+<p><b>obs: </b>O primeiro parâmetro da string de formato é sempre referido
+como parâmetro zero: {0}</p>
+<p>Você pode usar os parâmetros string de formato para especificar quantos
+caracteres devem ser usados e se estes devem ser justificados a esquerda ou a
+direita, observe os códigos:</p>
+<p class="codigo">Console.WriteLine(&quot;Justificado a esquerda e com tamanho
+10: {0,-10}&quot;, &quot;oi&quot;);<br>
+Console.WriteLine(&quot;Justificado a&nbsp; direita e com tamanho 10:
+{0,10}&quot;, 99);</p>
+<p>este código retorna as seguintes strings, respectivamente:</p>
+<p class="codigo">&quot;Justificado a esquerda e com tamanho
+10:oi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;<br>
+&quot;Justificado a&nbsp; direita e com tamanho
+10:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 99&quot;</p>
+<h4>Formatando Números</h4>
+<p>Você pode também usar a string de formato para especificar com os dados
+numéricos serão formatados, a sintaxe completa é: {N,M:StringDeFormato}, onde
+N ]e o parâmetro M é serve para ditar o tamanho do campo e se ele deve ser
+justificado a direita ou a esquerda, e StringDeFormato especifica como o dado
+numérico será mostrado.</p>
+<p>Observe a tabela, em todos os formatos o número de dígitos a serem
+mostrados, ou arrendondados, pode opcionalmente ser especificado.</p>
+<table border="1" cellpadding="0" width="450">
+  <tr>
+    <td class="cab_tab">Tipo</td>
+    <td class="cab_tab">Significado</td>
+  </tr>
+  <tr>
+    <td>C</td>
+    <td>Mostra em formato de moeda utilizando a localidade setada como padrão.</td>
+  </tr>
+  <tr>
+    <td>D</td>
+    <td>Mostra um numero como um inteiro</td>
+  </tr>
+  <tr>
+    <td>E</td>
+    <td>Escreve em notação científica</td>
+  </tr>
+  <tr>
+    <td>F</td>
+    <td>Mostra com um ponto fixo separando parte inteira e parte decimal</td>
+  </tr>
+  <tr>
+    <td>G</td>
+    <td>Mostra o texto com um inteiro, ponto fixo ou notação científica,
+      dependendo de qual deles é mais compacto</td>
+  </tr>
+  <tr>
+    <td>N</td>
+    <td>Mostra o número com separadores de milhares, milhões, etc.</td>
+  </tr>
+  <tr>
+    <td>X</td>
+    <td>Mostra o número em hexadecimal</td>
+  </tr>
+</table>
+<p>Exemplos:</p>
+<p class="codigo">Console.WriteLine(&quot;Formato de moeda atual- {0:C} {1:C4}", 88.8, -888.8);<br>
+Console.WriteLine(&quot;Formato de Inteiro - {0:D5}", 88);<br>
+Console.WriteLine(&quot;Notação científica - {0:E}", 888.8);<br>
+Console.WriteLine(&quot;Com ponto fixo - {0:F3}",888.8888);<br>
+Console.WriteLine(&quot;Formato geral - {0:G}", 888.8888);<br>
+Console.WriteLine(&quot;Formato numérico - {0:N}", 8888888.8);<br>
+Console.WriteLine(&quot;Formato Hexadeciaml - {0:X4}", 88);</p>
+
+<p>Saídas:</p>
+<p class="codigo">Formato de moeda - $88.800000000000000 ($888.8000)<br>
+Formato de Inteiro - 00088<br>
+Notação científica - 8.888000000000000E+002<br>
+Com ponto fixo - 888.889<br>
+Formato geral - 888.8888<br>
+Formato numérico atual - 8,888,888.800000000000000<br>
+Formato Hexadeciaml - 0058</p>
+<h3>Métodos Read e ReadLine</h3>
+<hr>
+<ul>
+  <li>Console.Read e Console.ReadLine lêem a entrada do usuário.
+    <ul>
+      <li>Read lê o próximo caractere.</li>
+      <li>ReadLine lê até o final da linha.&nbsp;</li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<p>Você pode obter uma entrada vinda do teclado usando os métodos Console.Read
+e Console.ReadLine</p>
+<h4>O método Read</h4>
+<p>Read lê o próximo caractere da entrada padrão (teclado), ele retorna um
+inteiro contendo o número do caractere do formato Unicode, se não houver mais
+entrada a ser lida, ele retorna -1.</p>
+<h4>O método ReadLine</h4>
+<p>ReadLine lê todos os caracteres até chegar no final da linha, ele retorna
+uma string com os caracteres lidos. Observe o código seguinte, ele lê uma
+linha do teclado e em seguida a mostra na tela.</p>
+<p class="codigo">string input = Console.ReadLine( );<br>
+Console.WriteLine(&quot;{0}&quot;, input);</p>
+
+</body>
+
+</html>

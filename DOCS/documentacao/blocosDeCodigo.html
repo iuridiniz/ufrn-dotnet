@@ -1,0 +1,522 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>:: C# e .NET :: Bloco de Codigo ::</title>
+<link rel="stylesheet" type="text/css" href="../css/padrao.css">
+</head>
+
+<body>
+
+<h1><b><a href="../index.html">Plataforma .Net e C#</a></b></h1>
+<h2>Blocos de código</h2>
+<p>Neste módulo você verá blocos e instruções de seleção, de repetição,
+de desvio e de tratamento de erro.</p>
+<p>Última revisão: 28/07/2003</p>
+<p>Página do projeto: http://tux.lcc.ufrn.br/~iuri/projeto&nbsp;</p>
+<h3>Instruções</h3>
+<p>Um programa consiste em uma seqüência de instruções, quando o programa é
+chamado, estas instruções são executadas uma após a outra, como elas estão
+dispostas no programa, da esquerda para a direita, de cima para baixo.</p>
+<h3>Blocos</h3>
+<p>Quando você desenvolve aplicações em C#, você precisa agrupar
+instruções como em outras linguagens de programação. Para isto, você usa a
+sintaxe de linguagens como C, C++, Perl e Java, isto é, você agrupa suas
+instruções entre chaves: { e }. Você não usa uma palavra para delimitar como <i>If</i>..<i>End</i> If do Microsoft Visual Basic.</p>
+<p>Um bloco pode conter um simples instrução, várias instruções ou outro
+bloco.</p>
+<p>Cada bloco possui um escopo. Uma variável declarada em um bloco é chamada
+de variável local. O escopo(validade) da variável local se estende desde sua
+declaração até o } que finaliza o bloco que contém ela.</p>
+<p>Em C#, você não pode declarar uma variável em um bloco interno com o mesmo
+nome de uma variável em um bloco externo. Exemplo:</p>
+<p class="codigo">int i;<br>
+{<br>
+&nbsp;&nbsp;&nbsp; int i; // Erro: variável já declarada no bloco pai.<br>
+}</p>
+<p>Entretanto, você pode declarar variáveis do mesmo nome, em blocos
+paralelos. Blocos paralelos são bloco que então contidos um mesmo bloco pai e
+estão no mesmo nível. Exemplo:</p>
+<p class="codigo">{<br>
+&nbsp;&nbsp;&nbsp; int i;<br>
+}<br>
+<br>
+{<br>
+&nbsp;&nbsp;&nbsp; int i;<br>
+}</p>
+<p>Você pode declarar variáveis em qualquer lugar em um bloco.</p>
+<h3>Blocos de seleção</h3>
+<p>As instruções <i> if</i> e <i> switch</i> são conhecidas como instruções de seleção.
+Eles fazem escolhas baseadas no valor das expressões e seletivamente executam
+outras instruções a partir das escolhas.</p>
+<h3>if...else</h3>
+<p>sintaxe:</p>
+<p class="codigo">if ( Expressão-Boleana )&nbsp;<br>
+&nbsp;&nbsp;&nbsp; instrução/bloco-se-verdadeiro<br>
+else&nbsp;<br>
+&nbsp;&nbsp;&nbsp; instrução/bloco-se-falso</p>
+<p>Exemplos :</p>
+<p class="codigo">if ( numero % 2 == 0 )<br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;Número par&quot;);<br>
+<br>
+if (minutos == 60 ) {<br>
+&nbsp;&nbsp;&nbsp; minutos = 0;<br>
+&nbsp;&nbsp;&nbsp; horas ++;<br>
+}</p>
+<h4>Convertendo inteiros para boleanos</h4>
+<p>Conversões implícitas de inteiros para boleanos é uma potencial fontes de
+bugs. Para evitar isto, C# não suporta conversões de inteiros para boleanos .
+Esta é uma diferença significante entre C# e outras linguagens similares, os
+exemplos seguintes são inválidos:</p>
+<p class="codigo">int x;<br>
+if (x) ... // Deveria ser x != 0 in C#<br>
+if (x = valor()) ... //Deveria ser (x = valor) != 0 em C#.</p>
+<h3>switch</h3>
+<p>sintaxe:</p>
+<p class="codigo">switch (expressão) {<br>
+<br>
+&nbsp;&nbsp;&nbsp; case valor1:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; instruções;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>
+&nbsp;&nbsp;&nbsp; case valor2:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; instruções;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>
+&nbsp;&nbsp;&nbsp; case valor3:<br>
+&nbsp;&nbsp;&nbsp; case valor4:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; instruções;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>
+&nbsp;&nbsp;&nbsp; case valor5:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; instruções;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>
+&nbsp;&nbsp;&nbsp; case valor6:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; instruções;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; goto case valor1;<br>
+&nbsp;&nbsp;&nbsp; default:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; instruções;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>
+<br>
+}</p>
+<p>A instrução <i> switch</i> é executada assim:</p>
+<ol>
+  <li>Se uma das constantes especificadas em case é igual ao valor da
+    expressão, o controle é transferido para a lista de instruções do case.</li>
+  <li>Se nenhum das constantes de cada case é igual ao valor da expressão e o <i>
+    switch</i> contém uma etiqueta default, o controle é transferido para a lista
+    de instruções dela.</li>
+  <li>Se nenhum das constantes de cada case é igual ao valor da expressão e o <i>
+    switch</i> não contém uma etiqueta default, o controle é transferido para o
+    fim do <i> switch</i>.</li>
+</ol>
+<p>Você pode usar o comando <i> switch</i> com os seguintes tipos retorno de
+expressões: quaisquer valores inteiros, caracteres, um <i> enum</i>, ou uma string.</p>
+<p>Nota: Diferente de Java, C ou C++, o <i> switch</i> aceita o tipo string e o valor
+<i>
+null</i> é permitido para uma constante de etiqueta do case.</p>
+<h4>Usando o comando break</h4>
+<p>Diferente de Java, C ou C++, C# não aceita uma transferência de controle
+silenciosa para a próxima etiqueta de case, isto gera um erro ao se compilar o
+programa, em outras palavras você deve sempre especificar uma regra para o
+final de cada case, as instruções que não geram erro são: a instrução <i>
+break</i>(a mais comum), a instrução <i> goto</i>(muito rara), a instrução <i> return</i>, a
+instrução <i> throw</i>, ou um loop infinito.</p>
+<h3>Blocos de repetição</h3>
+<p>As instruções <i> while</i>, <i>do</i>, <i> for</i> e <i> foreach</i> são conhecidas como instruções de
+interação. Você deve usá-las quando quer que certas operações sejam
+executadas enquanto uma condição é verdadeira.</p>
+<h3>while</h3>
+
+<p>O laço <i>while</i> é o mais simples de todos os laços. Ele executa
+repetidamente as instruções internas enquanto (<i>while</i>, em inglês) uma
+expressão boleana é verdadeira.</p>
+
+<p>Sintaxe:</p>
+
+<p class="codigo">while ( expressão-boleana) <br>
+&nbsp;&nbsp;&nbsp; instrução/bloco</p>
+
+<p>Ele é executado como se segue:</p>
+
+<ol>
+  <li>A expressão boleana de controle do <i>while</i> é avaliada.</li>
+  <li>Se a expressão for verdadeira o controle é transferido para as
+    instruções internas do <i>while</i>, quando executar todas as instruções
+    o controle é transferido novamente para o início do <i>while</i> e a
+    expressão é novamente avaliada.</li>
+  <li>Se a expressão for falsa, o controle é transferido para o fim a próxima
+    instrução fora do <i>while</i>.</li>
+</ol>
+<p>Exemplos:</p>
+<p class="codigo">while ( i &lt; 10) <br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine(i++);<br>
+<br>
+while (true)<br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;Laço infinito&quot;);</p>
+<h3>do</h3>
+<p>O laço do sempre vem junto de uma instrução <i>while</i>, ele é muito
+similar ao laço <i>while</i>, exceto que a expressão boleana é avaliada no
+final de cada interação.</p>
+<p>sintaxe:</p>
+<p class="codigo">do<br>
+&nbsp;&nbsp;&nbsp; instrução/bloco-de-código<br>
+while ( expressão boleana );</p>
+<p>Ele é executado como se segue:</p>
+<ol>
+  <li>O controle é transferido para as instruções internas do <i>do</i>.</li>
+  <li>Quando forem executadas todas as instruções, a expressão boleana é
+    avaliada.</li>
+  <li>Se a expressão for verdadeira, o controle é transferido ao início do <i>do</i>.</li>
+  <li>Se a expressão for falsa o controle é transferido para a primeira
+    instrução após o <i>do</i>.</li>
+</ol>
+<p>Exemplos:</p>
+<p class="codigo">do<br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine(i++);<br>
+while ( i &lt; 10 );<br>
+<br>
+do {<br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine(i);<br>
+&nbsp;&nbsp;&nbsp; i++;<br>
+} while ( i &lt; 10 );</p>
+<h3>for</h3>
+<p>Quando usamos o laço <i>while</i>, desenvolvedores podem esquecer de
+atualizar o conteúdo da variável de controle, como no código seguinte:</p>
+<p class="codigo">int i = 0;<br>
+while ( i &lt; 10 )<br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine(i); // isto gera um laço infinito, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// pois i não muda</p>
+<p>Você pode minimizar os erros usando um laço <i>for</i>. O laço <i>for</i>
+contorna este problema movendo o código de atualização e inicialização para
+o início do laço, onde é mais difícil de se esquecer.</p>
+<p>Sintaxe:</p>
+<p class="codigo">for ( inicialização; condição; atualização)<br>
+&nbsp;&nbsp;&nbsp; instrução/bloco</p>
+<p>esta sintaxe é idêntica ao seguinte código:</p>
+<p class="codigo">inicialização<br>
+while (condição) {<br>
+&nbsp;&nbsp;&nbsp; instrução/instruções<br>
+&nbsp;&nbsp;&nbsp; atualização<br>
+}</p>
+<p>exemplos:</p>
+<p class="codigo">for ( ; ; ) { <br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;Laço infinito&quot;);<br>
+}<br>
+<br>
+for (int i = 0; i &lt; 10; i++) <br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine(i);<br>
+<br>
+for (int i = 0; i &lt; 10; i++){<br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine(i);<br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine(10 - i);<br>
+}</p>
+<h3>foreach</h3>
+<p>A .Net Framework contém várias classes de coleções no namespace <b>System.Collections</b>,
+uma destas classes de coleções é a <i>ArrayList</i>. Você pode usar um <i>ArrayList</i>
+para criar uma coleção de variáveis e adicionar elementos a ela. Observe o
+seguinte código:</p>
+
+<p class="codigo">ArrayList numeros = new ArrayList();<br>
+<br>
+for (int i = 0; i &lt; 10; I++) {<br>
+&nbsp;&nbsp;&nbsp; numeros.Add(i);<br>
+}</p>
+
+<p>mostrando cada elemento depois:</p>
+<p class="codigo">for (int i = 0; i &lt; numeros.Count; i++) {<br>
+&nbsp;&nbsp;&nbsp; int numero = (int) numeros[i];<br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine(numero);<br>
+}</p>
+<p>Mas você pode melhorar este código usando o loop <i>foreach</i>.&nbsp; O
+loop <i>foreach</i> permite que você interaja com cada elemento de uma lista a
+cada loop.</p>
+<p>Sintaxe:</p>
+<p class="codigo">foreach (Tipo variável-receptora in coleção)<br>
+&nbsp;&nbsp;&nbsp; instrução/bloco</p>
+<p>O loop <i>foreach</i> atribui à variável -receptora um valor da coleção a
+cada interação do laço enquanto houver elementos na coleção que não foram
+atribuídos a variável-receptora.</p>
+<p>exemplo:</p>
+<p class="codigo">foreach (int numero in numeros)<br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine(numero);</p>
+<p>Diferente de Perl, em C# você não pode modificar os elementos em uma
+coleção usando um <i>foreach</i> porque a variável de interação é
+implicitamente declarada como <i>readonly</i>.</p>
+<p class="codigo">foreach (int numero em numeros) {&nbsp;<br>
+&nbsp;&nbsp;&nbsp; numero++; //Erro em tempo de compilação<br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine(numero);<br>
+}</p>
+<h3>Instruções de desvio</h3>
+<p>As instruções <i>goto</i>, <i>break</i> e <i>continue</i> são conhecidas
+como instruções de desvio. Você usa elas para transferir o controle de um
+ponto para outro do programa.</p>
+<h3>goto</h3>
+<p>Esta instrução é a mais primitiva instrução de desvio em C#, ela
+transfere o controle para uma etiqueta. A etiqueta deve existir e estar no mesmo
+escopo da instrução <i>goto</i>. Mais de um <i>goto</i> pode transferir o
+controle para uma mesma etiqueta. Exemplo:</p>
+<p class="codigo">if ( (numero % 2) == 0 )&nbsp; goto Par;<br>
+Console.WriteLine(&quot;ímpar&quot;);<br>
+goto Fim;<br>
+<br>
+Par:<br>
+Console.WriteLine(&quot;Par&quot;);<br>
+<br>
+Fim:&nbsp;</p>
+<p>O <i>goto</i> pode transferir o controle para fora de um bloco, mas nunca
+pode transferir o controle para dentro de um bloco.</p>
+<p>A instrução <i>goto</i> e a etiqueta alvo devem ficar a parte do código,
+pois podem facilmente obscurecer a lógica de fluxo em programa, esta uma razão
+dos livros de programação não recomendarem o uso do <i>goto</i>.</p>
+<p>As únicas situações onde o <i>goto</i> é recomendado é na instrução <i>switch</i>
+ou para transferir o controle para o início de um laço, a fim de repetir a
+interação sem passar para a próxima, funcionando como o comando <i>redo</i>
+de Perl.</p>
+<h3>break e continue</h3>
+<p>O <i>break</i> consiste em parar um laço ou sair de um <i>switch</i>. O <i>continue</i>
+inicia uma nova interação de um laço. Exemplo:</p>
+<p class="codigo">int i = 0;<br>
+while (true) {<br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine(i);<br>
+&nbsp;&nbsp;&nbsp; i++;<br>
+&nbsp;&nbsp;&nbsp; if ( i &lt; 10)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; continue;<br>
+&nbsp;&nbsp;&nbsp; else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break;<br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;esta instrução nunca é
+chamada&quot;);<br>
+}</p>
+<p>O <i>break</i> e o <i>continue</i> não são muito diferentes de um <i>goto</i>,
+pois podem obscurecer o fluxo lógico do programa. O mesmo código acima pode
+ser reescrito assim:</p>
+<p class="codigo">int i = 0;<br>
+while ( i &lt; 10 ) {<br>
+&nbsp;&nbsp;&nbsp; Console.WriteLine(numeros[i]);<br>
+&nbsp;&nbsp;&nbsp; i+=;<br>
+}</p>
+<h3>Exceções</h3>
+<p>Como programador, você as vezes perde muito mais tempo procurando por erros
+e corrigindo-os do que pensando na lógica do programa.</p>
+<p>Nas linguagens procedimentais você freqüentemente mistura tratamento de
+erro com a lógica do programa. Exemplo:</p>
+<p class="codigo_borda">using System;<br>
+class Teste {<br>
+&nbsp;&nbsp;&nbsp; public static int Main() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // lógica do programa<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string entrada;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numero1, numero2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.Write(&quot;Insira um numero:
+&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entrada = Console.ReadLine();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; numero1 = int.Parse(entrada);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.Write(&quot;Insira outro
+numero: &quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entrada = Console.ReadLine();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; numero2 = int.Parse(entrada);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //misturando tratamento de erros<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (numero2 == 0) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;Não
+posso dividir por 0&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return(1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // continuando a lógica do programa<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;O resultado
+da divisao é {0} &quot;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+numero1 / numero2 );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return(0);<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</p>
+<h3>Tratando erros</h3>
+<p>sintaxe:</p>
+<p class="codigo">try {<br>
+&nbsp;&nbsp;&nbsp; código-que-pode-gerar-um-erro&nbsp;&nbsp;<br>
+}<br>
+catch {<br>
+&nbsp;&nbsp;&nbsp; rotina-de-tratamento-de-erro<br>
+}</p>
+<p>Sempre que ocorrer um erro na execução do código entre<i> try{ </i>e <i>}</i>,
+a .Net Framework chama <i>catch</i>. Exemplo:</p>
+<p class="codigo_borda">using System;<br>
+class Teste {<br>
+&nbsp;&nbsp;&nbsp; public static int Main() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // lógica do programa<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string entrada;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numero1, numero2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.Write(&quot;Insira um numero:
+&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entrada = Console.ReadLine();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; numero1 = int.Parse(entrada);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.Write(&quot;Insira outro
+numero: &quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entrada = Console.ReadLine();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; numero2 = int.Parse(entrada);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;O
+resultado da divisão é {0} &quot;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+numero1 / numero2 );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return (0);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // tratamento de erro<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; catch {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;Ocorreu
+um erro de divisão&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return(1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</p>
+<p>o código antigo ainda pode gerar um erro na conversão de string para
+inteiro, então podemos reescrevê-lo assim:</p>
+<p class="codigo_borda">using System;<br>
+class Teste {<br>
+&nbsp;&nbsp;&nbsp; public static int Main() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string entrada;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numero1, numero2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.Write(&quot;Insira um numero:
+&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entrada = Console.ReadLine();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; numero1 = int.Parse(entrada);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; catch&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;Conversão
+inválida&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.Write(&quot;Insira outro
+numero: &quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entrada = Console.ReadLine();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; numero2 = int.Parse(entrada);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; catch&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;Conversão
+inválida&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;O
+resultado da divisão é {0} &quot;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+numero1 / numero2 );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return (0);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; catch {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;Ocorreu
+um erro de divisão&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return(1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</p>
+<p>mas fazendo isto estaríamos misturando a lógica com o tratamento de erros,
+você poderia então fazer assim:</p>
+<p class="codigo_borda">using System;<br>
+class Teste {<br>
+&nbsp;&nbsp;&nbsp; public static int Main() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // lógica do
+programa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string
+entrada;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numero1,
+numero2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.Write(&quot;Insira
+um numero: &quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entrada =
+Console.ReadLine();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; numero1 = int.Parse(entrada);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.Write(&quot;Insira
+outro numero: &quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entrada =
+Console.ReadLine();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; numero2 = int.Parse(entrada);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;O
+resultado da divisão é {0} &quot;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+numero1 / numero2 );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return (0);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // tratamento dos erros<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; catch {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;Ocorreu
+um erro&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return(1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</p>
+<p>Mas escrevendo-o desse jeito, um erro ocorrre e o usuário não sabe por que
+erro ocorreu. Para contornar isto você pode usar múltiplos <i>catch</i>'s,
+cada um tratando de erro específico:</p>
+<p class="codigo_borda">using System;<br>
+class Teste {<br>
+&nbsp;&nbsp;&nbsp; public static int Main() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // lógica do
+programa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string
+entrada;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int numero1,
+numero2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.Write(&quot;Insira
+um numero: &quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entrada =
+Console.ReadLine();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; numero1 = int.Parse(entrada);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.Write(&quot;Insira
+outro numero: &quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entrada =
+Console.ReadLine();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; numero2 = int.Parse(entrada);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;O
+resultado da divisão é {0} &quot;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+numero1 / numero2 );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return (0);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // tratamento dos erros<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; catch (FormatException) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;Número
+inválido&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return(1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; catch (DivideByZeriException) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(&quot;Não
+posso dividir por zero&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return(1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; }<br>
+}</p>
+<p>Os blocos <i>try</i> e catch são usados para tratar de erros gerados por
+programas em C#. Ao invés de setar variáveis globais para conter erros, as
+rotinas de C# lançam exceções que são transferidas para uma apropriada
+instrução <i>catch</i>.</p>
+<h3>Gerando exceções</h3>
+<p>Quando precisamos gerar um exceção chamamos uma instrução <i>throw</i>.
+Isto imediatamente suspende a execução normal de um programa e o controle é
+transferido para o primeiro <i>catch</i> que pode tratar da exceção. Exemplo:</p>
+<p class="codigo">if (minutos &lt; 0 || minutos&nbsp; &gt;= 60) {<br>
+&nbsp;&nbsp;&nbsp; string erro&nbsp; = minutos + &quot; não é um minuto
+válido&quot;;<br>
+&nbsp;&nbsp;&nbsp; throw new InvalidTimeException(erro);<br>
+}</p>
+<p>Neste exemplo, a instrução <i>throw</i> é usada para gerar um exceção
+definida pelo programador, InvalidTimeException, se o minutos passados não
+forem minutos válidos, a mensagem passada no argumento da exceção é
+mostrada.</p>
+<p><b>Liberando recursos</b></p>
+<p>C# também possui uma cláusula finally a fim de se&nbsp; executar
+instruções ao final de um fluxo terminado normalmente ou terminado com um
+erro, isto pode ser muito útil por exemplo para fechar arquivos ou desconectar
+banco de dados ao final de um bloco, ou para evitar a duplicação de
+instruções entre o bloco <i>try</i> e o bloco <i>catch</i>.</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

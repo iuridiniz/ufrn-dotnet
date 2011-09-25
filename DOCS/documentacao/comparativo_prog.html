@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<!-- 
+	Autor inicial: Iuri Gomes Diniz
+	Ultima revisao: Iuri Gomes DIniz (08/06/2003)
+-->
+  <title>:: C# e .NET :: Comparativo entre C#, Java, C++ ::</title>
+<link rel="stylesheet" type="text/css" href="../css/padrao.css">
+</head>
+<body>
+<h1><b><a href="../index.html">Plataforma .Net e C#</a></b></h1>
+<h1>Rápido comparativo entre C#, Java, C++</h1>
+<p>Este módulo demonstra como que praticamente não existem diferenças no jeito de
+implementar procedimentos, seja em C#, C++ ou Java.</p>
+<p>Última revisão: 13/07/2003</p>
+<p>Página do projeto: http://tux.lcc.ufrn.br/~iuri/projeto&nbsp;</p>
+<p>&nbsp;</p>
+<p> Muitos dos procedimentos simples que n&oacute;s usamos em C#
+s&atilde;o similares as linguagens das quais ele deriva (C++ e Java),
+em alguns casos os procedimentos são id&ecirc;nticos.<br>
+Olhe os exemplos a seguir: </p>
+<h2>Declarando vari&aacute;veis:</h2>
+<table cellpadding="3" cellspacing="6">
+  <tbody>
+    <tr>
+	<td class="cab_tab">C#</td>
+	<td class="cab_tab">C++</td>
+	<td class="cab_tab">Java</td>
+    </tr>
+    <tr>
+	<td>int x;</td>
+	<td>int x;</td>
+	<td>int x;</td>
+    </tr>
+    <tr>
+	<td>int x=3;</td>
+	<td>int x=3;</td>
+	<td>int x=3;</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Atribui&ccedil;&atilde;o:</h2>
+<table cellpadding="3" cellspacing="6">
+  <tbody>
+    <tr>
+	<td class="cab_tab">C#</td>
+	<td class="cab_tab">C++</td>
+	<td class="cab_tab">Java</td>
+    </tr>
+    <tr>
+	<td>numero = 7;</td>
+	<td>numero = 7;</td>
+	<td>numero = 7;</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Loop FOR:</h2>
+<h3>C#:</h3>
+<p class="codigo">for (int i = 1; &lt;= 10; i++)<br>	&nbsp;&nbsp;&nbsp;
+System.Console.WriteLine(&quot;O Número i = {0}&quot;, i);<br></p>
+<h3>C++:</h3>
+<p class="codigo">for (int i = 1; &lt;= 10; i++)<br>	&nbsp;&nbsp;&nbsp; std::cout
+&lt;&lt; &quot;O Número i = &quot; &lt;&lt; i &lt;&lt; endl;	</p>
+<h3>Java:</h3>
+<p class="codigo">for (int i = 1; &lt;= 10; i++)<br>	&nbsp;&nbsp;&nbsp;
+System.out.println(&quot;O Número i = &quot; + i);<br>	</p>
+<h2>Loop WHILE</h2>
+<h3>C#:</h3>
+<p class="codigo">while ( x &lt; 10)<br>{<br>	&nbsp;&nbsp;&nbsp; x++;<br>	&nbsp;&nbsp;&nbsp;
+System.Console.Write( x );<br>}<br></p>
+<h3>C++:</h3>
+<p class="codigo">while ( x &lt; 10)<br>{<br>	&nbsp;&nbsp;&nbsp; x++;<br>	&nbsp;&nbsp;&nbsp;
+std::cout &lt;&lt; x;<br>}<br>	</p>
+<h3>Java:</h3>
+<p class="codigo">while ( x &lt; 10)<br>{<br>	&nbsp;&nbsp;&nbsp; x++;<br>	&nbsp;&nbsp;&nbsp;
+System.out.print( x );<br>}<br></p>
+<h2>Estrutura de sele&ccedil;&atilde;o IF </h2>
+<h3>C#:</h3>
+<p class="codigo">if ( n &lt; Max )<br>{<br>	&nbsp;&nbsp;&nbsp; total += n;<br>	&nbsp;&nbsp;&nbsp;
+n++;<br>}<br>else {<br>	&nbsp;&nbsp;&nbsp; total += n;<br>
+&nbsp;&nbsp;&nbsp;
+n--;<br>}<br></p>
+<h3>C++:</h3>
+<p class="codigo">if ( n &lt; Max )<br>{<br>	&nbsp;&nbsp;&nbsp; total += n;<br>	&nbsp;&nbsp;&nbsp;
+n++;<br>}<br>else {<br>	&nbsp;&nbsp;&nbsp; total += n;<br>	&nbsp;&nbsp;&nbsp;
+n--;<br>}<br></p>
+<h3>Java:</h3>
+<p class="codigo">if ( n &lt; Max )<br>{<br>	&nbsp;&nbsp;&nbsp; total += n;<br>	&nbsp;&nbsp;&nbsp;
+n++;<br>}<br>else {<br>	&nbsp;&nbsp;&nbsp; total += n;<br>	&nbsp;&nbsp;&nbsp;
+n--;<br>}<br></p>
+<p>Como você pode notar praticamente não existem diferenças no jeito de
+implementar procedimentos.</p>
+</body>
+</html>
