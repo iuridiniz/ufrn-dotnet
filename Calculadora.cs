@@ -683,7 +683,7 @@ namespace Calculadora {
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.Opacity = 0.2;
+			this.Opacity = 0.9;
 			this.Text = "Calculadora";
 			this.controlesDaCalculadora.ResumeLayout(false);
 			this.ResumeLayout(false);

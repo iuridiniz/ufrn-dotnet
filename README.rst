@@ -20,6 +20,9 @@ Primeira caixa de diálogo - HelloMessageBox.cs
 
 Caixa de diálogo com pergunta - BoxInvocado.cs
 
-Calculadora gráfica - Calculadora.cs 
+Calculadora gráfica - Calculadora.cs::
+
+    $ gmcs Calculadora.cs -r:System.Windows.Forms.dll -r:System.Drawing.dll
+
 
 Formulário ASP.NET - FormularioAspNET.aspx 
